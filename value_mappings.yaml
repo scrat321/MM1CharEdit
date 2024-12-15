@@ -1,0 +1,436 @@
+Sex:
+  1: Male
+  2: Female
+Alignment:
+  1: Good
+  2: Neutral
+  3: Evil
+Race:
+  1: Human
+  2: Elf
+  3: Dwarf
+  4: Gnome
+  5: Half-orc
+Class:
+  1: Knight
+  2: Paladin
+  3: Archer
+  4: Cleric
+  5: Sorcerer
+  6: Robber
+Condition:
+  0: Good
+  1: Asleep
+  2: Blinded
+  3: Blinded, Asleep
+  4: Silenced
+  5: Silenced, Asleep
+  6: Silenced, Blinded
+  7: Silenced, Blinded, Asleep
+  8: Diseased
+  9: Diseased, Asleep
+  10: Diseased, Blinded
+  11: Diseased, Blinded, Asleep
+  12: Diseased, Silenced
+  13: Diseased, Silenced, Asleep
+  14: Diseased, Silenced, Blinded
+  15: Diseased, Silenced, Blinded, Asleep
+  16: Poisoned
+  17: Poisoned, Asleep
+  18: Poisoned, Blinded
+  19: Poisoned, Blinded, Asleep
+  20: Poisoned, Silenced
+  21: Poisoned, Silenced, Asleep
+  22: Poisoned, Silenced, Blinded
+  23: Poisoned, Silenced, Blinded, Asleep
+  24: Poisoned, Diseased
+  25: Poisoned, Diseased, Asleep
+  26: Poisoned, Diseased, Blinded
+  27: Poisoned, Diseased, Blinded, Asleep
+  28: Poisoned, Diseased, Silenced
+  29: Poisoned, Diseased, Silenced, Asleep
+  30: Poisoned, Diseased, Silenced, Blinded
+  31: Poisoned, Diseased, Silenced, Blinded, Asleep
+  32: Paralyzed
+  33: Paralyzed, Asleep
+  34: Paralyzed, Blinded
+  35: Paralyzed, Blinded, Asleep
+  36: Paralyzed, Silenced
+  37: Paralyzed, Silenced, Asleep
+  38: Paralyzed, Silenced, Blinded
+  39: Paralyzed, Silenced, Blinded, Asleep
+  40: Paralyzed, Diseased
+  41: Paralyzed, Diseased, Asleep
+  42: Paralyzed, Diseased, Blinded
+  43: Paralyzed, Diseased, Blinded, Asleep
+  44: Paralyzed, Diseased, Silenced
+  45: Paralyzed, Diseased, Silenced, Asleep
+  46: Paralyzed, Diseased, Silenced, Blinded
+  47: Paralyzed, Diseased, Silenced, Blinded, Asleep
+  48: Paralyzed, Poisoned
+  49: Paralyzed, Poisoned, Asleep
+  50: Paralyzed, Poisoned, Blinded
+  51: Paralyzed, Poisoned, Blinded, Asleep
+  52: Paralyzed, Poisoned, Silenced
+  53: Paralyzed, Poisoned, Silenced, Asleep
+  54: Paralyzed, Poisoned, Silenced, Blinded
+  55: Paralyzed, Poisoned, Silenced, Blinded, Asleep
+  56: Paralyzed, Poisoned, Diseased
+  57: Paralyzed, Poisoned, Diseased, Asleep
+  58: Paralyzed, Poisoned, Diseased, Blinded
+  59: Paralyzed, Poisoned, Diseased, Blinded, Asleep
+  60: Paralyzed, Poisoned, Diseased, Silenced
+  61: Paralyzed, Poisoned, Diseased, Silenced, Asleep
+  62: Paralyzed, Poisoned, Diseased, Silenced, Blinded
+  63: Paralyzed, Poisoned, Diseased, Silenced, Blinded, Asleep
+  64: Unconscious
+  65: Unconscious, Asleep
+  66: Unconscious, Blinded
+  67: Unconscious, Blinded, Asleep
+  68: Unconscious, Silenced
+  69: Unconscious, Silenced, Asleep
+  70: Unconscious, Silenced, Blinded
+  71: Unconscious, Silenced, Blinded, Asleep
+  72: Unconscious, Diseased
+  73: Unconscious, Diseased, Asleep
+  74: Unconscious, Diseased, Blinded
+  75: Unconscious, Diseased, Blinded, Asleep
+  76: Unconscious, Diseased, Silenced
+  77: Unconscious, Diseased, Silenced, Asleep
+  78: Unconscious, Diseased, Silenced, Blinded
+  79: Unconscious, Diseased, Silenced, Blinded, Asleep
+  80: Unconscious, Poisoned
+  81: Unconscious, Poisoned, Asleep
+  82: Unconscious, Poisoned, Blinded
+  83: Unconscious, Poisoned, Blinded, Asleep
+  84: Unconscious, Poisoned, Silenced
+  85: Unconscious, Poisoned, Silenced, Asleep
+  86: Unconscious, Poisoned, Silenced, Blinded
+  87: Unconscious, Poisoned, Silenced, Blinded, Asleep
+  88: Unconscious, Poisoned, Diseased
+  89: Unconscious, Poisoned, Diseased, Asleep
+  90: Unconscious, Poisoned, Diseased, Blinded
+  91: Unconscious, Poisoned, Diseased, Blinded, Asleep
+  92: Unconscious, Poisoned, Diseased, Silenced
+  93: Unconscious, Poisoned, Diseased, Silenced, Asleep
+  94: Unconscious, Poisoned, Diseased, Silenced, Blinded
+  95: Unconscious, Poisoned, Diseased, Silenced, Blinded, Asleep
+  96: Unconscious, Paralyzed
+  97: Unconscious, Paralyzed, Asleep
+  98: Unconscious, Paralyzed, Blinded
+  99: Unconscious, Paralyzed, Blinded, Asleep
+  100: Unconscious, Paralyzed, Silenced
+  101: Unconscious, Paralyzed, Silenced, Asleep
+  102: Unconscious, Paralyzed, Silenced, Blinded
+  103: Unconscious, Paralyzed, Silenced, Blinded, Asleep
+  104: Unconscious, Paralyzed, Diseased
+  105: Unconscious, Paralyzed, Diseased, Asleep
+  106: Unconscious, Paralyzed, Diseased, Blinded
+  107: Unconscious, Paralyzed, Diseased, Blinded, Asleep
+  108: Unconscious, Paralyzed, Diseased, Silenced
+  109: Unconscious, Paralyzed, Diseased, Silenced, Asleep
+  110: Unconscious, Paralyzed, Diseased, Silenced, Blinded
+  111: Unconscious, Paralyzed, Diseased, Silenced, Blinded, Asleep
+  112: Unconscious, Paralyzed, Poisoned
+  113: Unconscious, Paralyzed, Poisoned, Asleep
+  114: Unconscious, Paralyzed, Poisoned, Blinded
+  115: Unconscious, Paralyzed, Poisoned, Blinded, Asleep
+  116: Unconscious, Paralyzed, Poisoned, Silenced
+  117: Unconscious, Paralyzed, Poisoned, Silenced, Asleep
+  118: Unconscious, Paralyzed, Poisoned, Silenced, Blinded
+  119: Unconscious, Paralyzed, Poisoned, Silenced, Blinded, Asleep
+  120: Unconscious, Paralyzed, Poisoned, Diseased
+  121: Unconscious, Paralyzed, Poisoned, Diseased, Asleep
+  122: Unconscious, Paralyzed, Poisoned, Diseased, Blinded
+  123: Unconscious, Paralyzed, Poisoned, Diseased, Blinded, Asleep
+  124: Unconscious, Paralyzed, Poisoned, Diseased, Silenced
+  125: Unconscious, Paralyzed, Poisoned, Diseased, Silenced, Asleep
+  126: Unconscious, Paralyzed, Poisoned, Diseased, Silenced, Blinded
+  127: Unconscious, Paralyzed, Poisoned, Diseased, Silenced, Blinded, Asleep
+Item:
+  0:
+  1: Club
+  2: Dagger
+  3: Hand Axe
+  4: Spear
+  5: Short Sword
+  6: Mace
+  7: Flail
+  8: Scimitar
+  9: Broad Sword
+  10: Battle Axe
+  11: Long Sword
+  12: Club +1
+  13: Club +2
+  14: Dagger +1
+  15: Hand Axe +1
+  16: Spear +1
+  17: Short Sword +1
+  18: Mace +1
+  19: Flail +1
+  20: Scimitar +1
+  21: Broad Sword +1
+  22: Battle Axe +1
+  23: Long Sword +1
+  24: Flaming Club
+  25: Club of Noise - Cursed
+  26: Dagger +2
+  27: Hand Axe +2
+  28: Spear +2
+  29: Short Sword +2
+  30: Mace +2
+  31: Flail +2
+  32: Scimitar +2
+  33: Broad Sword +2
+  34: Battle Axe +2
+  35: Long Sword +2
+  36: Royal Dagger
+  37: Dagger of Mind
+  38: Diamond Dagger
+  39: Electric Spear
+  40: Holy Mace
+  41: Un-Holy Mace
+  42: Dark Flail - Cursed
+  43: Flail of Fear
+  44: Lucky Scimitar
+  45: Mace of Undead - Cursed
+  46: Cold Axe
+  47: Electric Sword
+  48: Flaming Sword
+  49: Sword of Might
+  50: Sword of Speed
+  51: Sharp Sword
+  52: Accurate Sword
+  53: Sword of Magic
+  54: Immortal Sword
+  55: Axe Protector
+  56: Axe Destroyer
+  57: X!XX!X's Sword
+  58: Adamantine Axe
+  59: Ultimate Sword
+  60: Element Sword
+  61: Sling
+  62: Crossbow
+  63: Short Bow
+  64: Long Bow
+  65: Great Bow
+  66: Sling +1
+  67: Crossbow +1
+  68: Short Bow +1
+  69: Long Bow +1
+  70: Great Bow +1
+  71: Magic Sling
+  72: Crossbow +2
+  73: Short Bow +2
+  74: Long Bow +2
+  75: Great Bow +2
+  76: Crossbow Luck
+  77: Crossbow Speed
+  78: Lightning Bow
+  79: Flaming Bow
+  80: Giant's Bow
+  81: The Magic Bow
+  82: Bow of Power
+  83: Robber's X-Bow
+  84: Archer's Bow
+  85: Obsidian Bow - Cursed
+  86: Staff
+  87: Glaive
+  88: Bardiche
+  89: Halberd
+  90: Great Hammer
+  91: Great Axe
+  92: Flamberge
+  93: Staff +1
+  94: Glaive +1
+  95: Bardiche +1
+  96: Halberd +1
+  97: Great Hammer +1
+  98: Great Axe +1
+  99: Flamberge +1
+  100: Staff +2
+  101: Glaive +2
+  102: Bardiche +2
+  103: Halberd +2
+  104: Great Hammer +2
+  105: Great Axe +2
+  106: Flamberge +2
+  107: Staff of Light
+  108: Cold Glave
+  109: Curing Staff
+  110: Minotaur's Axe - Cursed
+  111: Thunder Hammer
+  112: Great Axe +3
+  113: Flamberge +3
+  114: Sorcerer Staff
+  115: Staff of Magic
+  116: Demon's Glaive
+  117: Devil's Glaive
+  118: The Flamberge
+  119: Holy Flamberge
+  120: Evil Flamberge
+  121: Padded Armor
+  122: Leather Armor
+  123: Scale Armor
+  124: Ring Mail
+  125: Chain Mail
+  126: Splint Mail
+  127: Plate Mail
+  128: Padded +1
+  129: Leather +1
+  130: Scale +1
+  131: Ring Mail +1
+  132: Chain Mail +1
+  133: Splint Mail +1
+  134: Plate Mail +1
+  135: Leather +2
+  136: Scale +2
+  137: Ring Mail +2
+  138: Chain Mail +2
+  139: Splint Mail +2
+  140: Plate Mail +2
+  141: Bracers AC 4
+  142: Ring Mail +3
+  143: Chain Mail +3
+  144: Splint Mail +3
+  145: Plate Mail +3
+  146: Bracers AC 6
+  147: Chain Mail +3 - Cursed
+  148: Bracers AC 8 - Cursed
+  149: Blue Ring Mail
+  150: Red Chain Mail
+  151: X!XX!X's Plate
+  152: Holy Plate
+  153: Un-Holy Plate
+  154: Ultimate Plate
+  155: Bracers AC 8
+  156: Small Shield
+  157: Large Shield
+  158: Silver Shield
+  159: Small Shield +1
+  160: Large Shield +1
+  161: Large Shield +1 - Cursed
+  162: Small Shield +2
+  163: Large Shield +2
+  164: Large Shield +2 - Cursed
+  165: Fire Shield
+  166: Cold Shield
+  167: Elec Shield
+  168: Acid Shield
+  169: Magic Shield
+  170: Dragon Shield
+  171: Rope & Hooks
+  172: Torch
+  173: Lantern
+  174: 10 Foot Pole
+  175: Garlic
+  176: Wolfsbane
+  177: Belladonna
+  178: Magic Herbs
+  179: Dried Beef
+  180: Robber's Tools
+  181: Bag of Silver
+  182: Amber Gem
+  183: Smelling Salt
+  184: Bag of Sand
+  185: Might Potion
+  186: Speed Potion
+  187: Sundial
+  188: Curing Potion
+  189: Magic Potion
+  190: Defense Ring
+  191: Bag of Garbage - Cursed
+  192: Scroll of Fire
+  193: Flying Carpet
+  194: Jade Amulet
+  195: Antidite Brew
+  196: Skill Potion
+  197: Boots of Speed
+  198: Lucky Charm
+  199: Wand of Fire
+  200: UnDead Amulet
+  201: Silent Chime
+  202: Belt of Power
+  203: Model Boat
+  204: Defense Cloak
+  205: Knowledge Book
+  206: Ruby Idol
+  207: Sorcerer Robe
+  208: Power Gauntlets
+  209: Cleric's Beads
+  210: Horn of Death
+  211: Potion of Life
+  212: Shinny Pendant
+  213: Lightning Wand
+  214: Precision Ring
+  215: Return Scroll
+  216: Teleport Helm
+  217: Youth Potion
+  218: Bells of Time
+  219: Magic Oil
+  220: Magic Vest
+  221: Destroyer Wand
+  222: Element Scarab
+  223: Sun Scroll
+  224: Star Ruby
+  225: Star Sapphire
+  226: Wealth Chest
+  227: Gem Sack
+  228: Diamond Collar
+  229: Fire Opal
+  230: UnObtainium
+  231: Vellum Scroll
+  232: Ruby Whistle
+  233: Kings Pass
+  234: Merchants Pass
+  235: Crystal Key
+  236: Coral Key
+  237: Bronze Key
+  238: Silver Key
+  239: Gold Key
+  240: Diamond Key
+  241: Cactus Nectar
+  242: Map of Desert
+  243: Laser Blaster
+  244: Dragons Tooth
+  245: Wyvern Eye
+  246: Medusa Head - Cursed
+  247: Ring of Okrim
+  248: B Queen Idol
+  249: W Queen Idol
+  250: Pirates Map A
+  251: Pirates Map B
+  252: Thundranium
+  253: Key Card
+  254: Eye of Goros
+  255: USELESS ITEM
+Equipped 1:
+  Ref: Item
+Equipped 2:
+  Ref: Item
+Equipped 3:
+  Ref: Item
+Equipped 4:
+  Ref: Item
+Equipped 5:
+  Ref: Item
+Equipped 6:
+  Ref: Item
+Backpack 1:
+  Ref: Item
+Backpack 2:
+  Ref: Item
+Backpack 3:
+  Ref: Item
+Backpack 4:
+  Ref: Item
+Backpack 5:
+  Ref: Item
+Backpack 6:
+  Ref: Item
+Town:
+  1: Sorpigal
+  2: Portsmith
+  3: Algary
+  4: Dusk
+  5: Erliquin
