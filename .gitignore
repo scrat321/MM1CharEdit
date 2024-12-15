@@ -54,3 +54,6 @@ Thumbs.db
 
 # Windows files
 *.lnk
+
+# Config file
+config.json
