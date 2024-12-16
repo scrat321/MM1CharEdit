@@ -36,50 +36,43 @@ class TestCharedit(unittest.TestCase):
             self.assertEqual(updated_name, "Char1..........")  # Original name remains unchanged
             mock_error.assert_called_with("Name exceeds the maximum length of 15 characters.")
 
-    def test_edit_character_town_success(self):
-        value_mappings['Town'] = {1: "Town1", 2: "Town2"}
-        self.sample_data[2285] = 1
+    def test_edit_item_with_multiple_ranges(self):
+        item_map = {
+            1: ("Item1", [(0, 1), (2, 3)]),  # Mock multiple ranges
+            2: ("Item2", [(4, 5)])
+        }
+        # Set initial values for ranges
+        self.sample_data[0:2] = (5).to_bytes(2, byteorder='little')
+        self.sample_data[2:4] = (10).to_bytes(2, byteorder='little')
 
-        with patch('charedit.Utility.prompt_input', side_effect=["2"]), \
+        with patch('charedit.Utility.prompt_input', side_effect=["1", "20", "x"]), \
                 patch('charedit.Logger.info') as mock_info:
-            edit_character_town(self.sample_data, 0)
-            self.assertEqual(self.sample_data[2285], 2)
-            mock_info.assert_called_with("Town set to: Town2")
+            edit_item(self.sample_data, item_map, "Test Item")
+            # Validate that only the last range was updated
+            self.assertEqual(int.from_bytes(self.sample_data[2:4], byteorder='little'), 20)
+            self.assertEqual(int.from_bytes(self.sample_data[0:2], byteorder='little'), 20)
+            mock_info.assert_called_with("Item1 set to: 20")
 
-    def test_edit_character_town_invalid(self):
-        value_mappings['Town'] = {1: "Town1", 2: "Town2"}
-        self.sample_data[2285] = 1
+    def test_edit_item_out_of_range_with_multiple_ranges(self):
+        item_map = {
+            1: ("Item1", [(0, 1), (2, 3)])
+        }
+        # Set initial values for ranges
+        self.sample_data[0:2] = (5).to_bytes(2, byteorder='little')
+        self.sample_data[2:4] = (10).to_bytes(2, byteorder='little')
 
-        with patch('charedit.Utility.prompt_input', side_effect=["3", "1"]), \
+        with patch('charedit.Utility.prompt_input', side_effect=["1", "99999", "15", "x"]), \
                 patch('charedit.Logger.error') as mock_error:
-            edit_character_town(self.sample_data, 0)
-            self.assertEqual(self.sample_data[2285], 1)  # Value remains unchanged
-            mock_error.assert_called_with("Value must be one of the available options.")
+            edit_item(self.sample_data, item_map, "Test Item")
+            # Validate that the invalid value does not overwrite data
+            self.assertEqual(int.from_bytes(self.sample_data[2:4], byteorder='little'), 15)
+            self.assertEqual(int.from_bytes(self.sample_data[0:2], byteorder='little'), 15)
+            mock_error.assert_called_with("Value must be between 0 and 65535.")
 
     def test_validate_value_with_options(self):
         allowed_values = {1: "Option1", 2: "Option2"}
         self.assertTrue(validate_value_with_options(1, allowed_values))
         self.assertFalse(validate_value_with_options(3, allowed_values))
-
-    def test_edit_item_success(self):
-        item_map = {1: ("Item1", (0, 1))}
-        self.sample_data[0:2] = (5).to_bytes(2, byteorder='little')
-
-        with patch('charedit.Utility.prompt_input', side_effect=["1", "10", "x"]), \
-                patch('charedit.Logger.info') as mock_info:
-            edit_item(self.sample_data, item_map, "Test Item")
-            self.assertEqual(int.from_bytes(self.sample_data[0:2], byteorder='little'), 10)
-            mock_info.assert_called_with("Item1 set to: 10")
-
-    def test_edit_item_out_of_range(self):
-        item_map = {1: ("Item1", (0, 1))}
-        self.sample_data[0:2] = (5).to_bytes(2, byteorder='little')
-
-        with patch('charedit.Utility.prompt_input', side_effect=["1", "99999", "10", "x"]), \
-                patch('charedit.Logger.error') as mock_error:
-            edit_item(self.sample_data, item_map, "Test Item")
-            mock_error.assert_called_with("Value must be between 0 and 65535.")
-            self.assertEqual(int.from_bytes(self.sample_data[0:2], byteorder='little'), 10)
 
 
 if __name__ == "__main__":

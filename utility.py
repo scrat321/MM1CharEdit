@@ -128,41 +128,50 @@ class Utility:
         return "\n".join(formatted_rows)
 
     @staticmethod
-    def display_stats_in_columns(stats_map: Dict[int, Any], data: bytes, value_mappings: Dict[str, Any], columns: int = 3) -> None:
+    def display_stats_in_columns(stats_map: Dict[int, Any], data: bytes, value_mappings: Dict[str, Any],
+                                 columns: int = 3) -> None:
         """
         Display statistics mapped from data in a formatted column layout.
 
         Args:
-            stats_map (Dict[int, (str, (int, int))]): Mapping of stat numbers to names and byte ranges.
+            stats_map (Dict[int, (str, List[Tuple[int, int]])]): Mapping of stat numbers to names and byte ranges.
             data (bytes): The data from which statistics are extracted.
             value_mappings (Dict[str, Any]): Value mappings for interpreting data.
             columns (int): Number of columns for display (default: 3).
         """
-        max_length = max(len(f"{num}. {stat}") for num, (stat, _) in stats_map.items())
-
         rows = []
-        for num, (stat, (start, end)) in stats_map.items():
+        for num, (stat, ranges) in stats_map.items():
+            # Use the last range to determine the value
+            start, end = ranges[-1]
             current_value = int.from_bytes(data[start:end + 1], byteorder='little', signed=False)
 
             if value_mappings.get(stat) and value_mappings.get(stat).get('Ref'):
                 display_value = value_mappings.get(
                     value_mappings.get(stat).get('Ref'), {}).get(current_value, str(current_value))
             else:
-                display_value = value_mappings.get(
-                    stat, {}).get(current_value, str(current_value))
-            num_str = f" {num}" if num < 10 else f"{num}"
-            rows.append(f"{num_str}. {stat.ljust(max_length)}: {display_value}")
+                display_value = value_mappings.get(stat, {}).get(current_value, str(current_value))
 
-        num_rows = math.ceil(len(rows) / columns)
-        grid = [rows[i:i + num_rows] for i in range(0, len(rows), num_rows)]
+            num_str = f" {num}" if num < 10 else f"{num}"
+            rows.append((f"{num_str}. {stat}", f": {display_value}"))
+
+        # Determine column widths for alignment
+        stat_width = max(len(row[0]) for row in rows)
+        value_width = max(len(row[1]) for row in rows)
+
+        # Format rows for display
+        formatted_rows = [f"{row[0].ljust(stat_width)}{row[1].ljust(value_width)}" for row in rows]
+
+        # Split into columns
+        num_rows = math.ceil(len(formatted_rows) / columns)
+        grid = [formatted_rows[i:i + num_rows] for i in range(0, len(formatted_rows), num_rows)]
 
         for row_set in zip(*grid):
-            Logger.text("  ".join(row.ljust(40) for row in row_set))
+            Logger.text("  ".join(row for row in row_set))
 
-        leftover_rows = len(rows) % num_rows
+        leftover_rows = len(formatted_rows) % num_rows
         if leftover_rows:
-            for row in rows[-leftover_rows:]:
-                Logger.text(row.ljust(40))
+            for row in formatted_rows[-leftover_rows:]:
+                Logger.text(row)
 
     @staticmethod
     def display_in_columns(items: List[str], columns: int = 1) -> None:

@@ -175,14 +175,14 @@ def edit_item(data: bytearray, item_map: dict, item_type: str, columns: int = 3)
 
         Utility.print_options_bar({"x": "Return"}, unsaved_changes)
         item_choice = Utility.prompt_input(
-            f"Enter the number of the {item_type.lower()} to edit, or 'x' to return").strip().lower()
+            f"Enter the number of the item to edit, or 'x' to return").strip().lower()
         if item_choice == 'x':
             break
 
         try:
             item_choice = int(item_choice)
             if item_choice in item_map:
-                item_name, (start, end) = item_map[item_choice]
+                item_name, ranges = item_map[item_choice]
 
                 # Show allowed values if available
                 allowed_values = value_mappings.get(item_name)
@@ -194,13 +194,11 @@ def edit_item(data: bytearray, item_map: dict, item_type: str, columns: int = 3)
                     Logger.text(Utility.format_allowed_values_in_columns(allowed_values, columns=4))
 
                 while True:
-                    current_value = int.from_bytes(data[start:end + 1], byteorder='little', signed=False)
-                    Logger.display(f"Current value of {item_name}: {current_value}")
-
-                    new_value = Utility.prompt_input(f"Enter new value for {item_name}").strip()
+                    new_value_input = Utility.prompt_input(
+                        f"Enter new value for {item_name}").strip()
                     try:
-                        new_value = int(new_value)
-                        max_value = (2 ** (8 * (end - start + 1))) - 1
+                        new_value = int(new_value_input)
+                        max_value = (2 ** (8 * (ranges[0][1] - ranges[0][0] + 1))) - 1
                         if not (0 <= new_value <= max_value):
                             Logger.error(f"Value must be between 0 and {max_value}.")
                             continue
@@ -208,15 +206,20 @@ def edit_item(data: bytearray, item_map: dict, item_type: str, columns: int = 3)
                         if not validate_value_with_options(new_value, allowed_values):
                             continue
 
-                        data[start:end + 1] = new_value.to_bytes(end - start + 1, byteorder='little', signed=False)
-                        unsaved_changes = True
-                        if allowed_values:
-                            Logger.info(f"{item_name} set to: {allowed_values[new_value]}")
-                        else:
-                            Logger.info(f"{item_name} set to: {new_value}")
                         break
                     except ValueError:
                         Logger.error("Please enter a valid integer.")
+
+                # Apply the same value to all ranges
+                for start, end in ranges:
+                    data[start:end + 1] = new_value.to_bytes(end - start + 1, byteorder='little', signed=False)
+
+                if allowed_values:
+                    Logger.info(f"{item_name} set to: {allowed_values[new_value]}")
+                else:
+                    Logger.info(f"{item_name} set to: {new_value}")
+
+                unsaved_changes = True
             else:
                 Logger.error("Please select a valid item number.")
         except ValueError:
@@ -279,9 +282,11 @@ def hex_edit_prompt(file_path: str, output_file: str = None) -> None:
 
         # Load the byte ranges from the external YAML config file
         byte_ranges = load_byte_ranges()
-        core_stats_map = {int(k): (v[0], tuple(v[1])) for k, v in byte_ranges['core_stats_map'].items()}
-        equipped_items_map = {int(k): (v[0], tuple(v[1])) for k, v in byte_ranges['equipped_items_map'].items()}
-        backpack_items_map = {int(k): (v[0], tuple(v[1])) for k, v in byte_ranges['backpack_items_map'].items()}
+        core_stats_map = {int(k): (v[0], v[1:]) for k, v in byte_ranges['core_stats_map'].items()}
+        equipped_items_map = {int(k): (v[0], [tuple(r) for r in v[1:]]) for k, v in
+                              byte_ranges['equipped_items_map'].items()}
+        backpack_items_map = {int(k): (v[0], [tuple(r) for r in v[1:]]) for k, v in
+                              byte_ranges['backpack_items_map'].items()}
 
         # Main menu loop
         while True:
@@ -325,12 +330,12 @@ def hex_edit_prompt(file_path: str, output_file: str = None) -> None:
                         continue
 
                     # Adjust each map to the character's offset
-                    core_stats = {num: (name, (start + char_start, end + char_start))
-                                  for num, (name, (start, end)) in core_stats_map.items()}
-                    equipped_items = {num: (name, (start + char_start, end + char_start))
-                                      for num, (name, (start, end)) in equipped_items_map.items()}
-                    backpack_items = {num: (name, (start + char_start, end + char_start))
-                                      for num, (name, (start, end)) in backpack_items_map.items()}
+                    core_stats = {num: (name, [(start + char_start, end + char_start) for start, end in ranges])
+                                  for num, (name, ranges) in core_stats_map.items()}
+                    equipped_items = {num: (name, [(start + char_start, end + char_start) for start, end in ranges])
+                                      for num, (name, ranges) in equipped_items_map.items()}
+                    backpack_items = {num: (name, [(start + char_start, end + char_start) for start, end in ranges])
+                                      for num, (name, ranges) in backpack_items_map.items()}
 
                     while True:
                         Logger.display(f"\nEditing {char_name}")
@@ -403,7 +408,10 @@ def main() -> None:
         save_game_file_path = set_save_game_file_path(CONFIG_FILE)
 
     # Warn the user to create a backup before proceeding
-    Logger.warn("*** Warning: Before making any changes, ensure you have created a backup copy of your save file. ***")
+    Logger.warn("\n*** Warning: Before making any changes, ensure you have created a backup copy of your save file. ***")
+
+    Logger.warn('''\nBe cautious when editing values: game mechanics may alter them dynamically. 
+Unintended affects may occur if values are set to extremes.\n''')
 
     # Proceed with editing
     output_file = save_game_file_path
