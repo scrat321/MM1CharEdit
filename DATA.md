@@ -314,9 +314,9 @@ See Item Lists below.
 | 2     | Dagger         |           | KPASR |                  |                   |         | 5          | 4/0          |
 | 14    | Dagger +1      |           | KPASR |                  |                   |         | 50         | 4/1          |
 | 26    | Dagger +2      |           | KPASR |                  | Sl/6              | 25      | 200        | 4/2          |
-| 37    | Dagger of Mind | S         |       | Intellect +3     | S4/7              |         | 20         | 750          |
+| 37    | Dagger of Mind |           | S     | Intellect +3     | S4/7              |         | 20         | 750          |
 | 42    | Dark Flail     | Evil      | KPAC  | Cursed           | C5/2              | 10      | 600        | 3/0          |
-| 38    | Diamond Dagger | S         |       | Might +4         |                   |         | 800        | 10/4         |
+| 38    | Diamond Dagger |           | S     | Might +4         |                   |         | 800        | 10/4         |
 | 39    | Electric Spear |           | KPA   | Electricity +40% | S2/1              | 16      | 1200       | 6/3          |
 | 47    | Electric Sword |           | KPA   | Electricity +40% | S3/4              | 10      | 2200       | 8/3          |
 | 60    | Element Sword  |           | KPAR  | Magic +25%       | C7/3              | 10      | 12000      | 8/5          |

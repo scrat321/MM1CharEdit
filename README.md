@@ -1,7 +1,7 @@
 # ⚔️ Might & Magic - Book 1 Character Editor
 
-This tool is designed to allow you to edit characters from the game _Might and Magic: Book One - The Secret of the Inner Sanctum (1986)_.  
-It provides a simple interface for modifying save files, including character stats, equipped items, and backpack items.
+This tool is designed to allow you to edit characters from the game _Might and Magic: Book One - The Secret of the Inner Sanctum (1986)_.
+<br />It provides a simple interface for modifying save files, including character stats, equipped items, and backpack items.
 
 
 
@@ -86,6 +86,11 @@ The `config.json` file stores the path to the save game file:
 <img src="screenshots/changing_classes.png" alt="Screenshot" width="400" height="100" /><br />
 <img src="screenshots/items.png" alt="Screenshot" width="800" height="1000" /><br />
 <img src="screenshots/character_display.png" alt="Screenshot" width="700" height="600" /><br />
+
+
+## 🔗 Useful Links
+
+- [https://www.oldgames.sk](https://www.oldgames.sk/docs/Might-and-Magic/1/index.html) -  
 
 
 # ⚠️ Disclaimer
