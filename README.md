@@ -1,7 +1,6 @@
 # ⚔️ Might & Magic - Book 1 Character Editor
 
-This tool is designed to allow you to edit characters from the game _Might and Magic: Book One - The Secret of the Inner Sanctum (1986)_.
-<br />It provides a simple interface for modifying save files, including character stats, equipped items, and backpack items.
+This tool is designed to allow you to edit characters from the game _Might and Magic: Book One - The Secret of the Inner Sanctum (1986)_. It provides a simple interface for modifying save files, including character stats, equipped items, and backpack items.
 
 
 
