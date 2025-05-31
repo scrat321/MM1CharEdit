@@ -89,7 +89,7 @@ The `config.json` file stores the path to the save game file:
 
 ## 🔗 Useful Links
 
-- [https://www.oldgames.sk](https://www.oldgames.sk/docs/Might-and-Magic/1/index.html) -  
+- [Oldgames documentation](https://www.oldgames.sk/docs/Might-and-Magic/1/index.html)  
 
 
 # ⚠️ Disclaimer
