@@ -58,6 +58,11 @@ class TestUtility(unittest.TestCase):
         self.assertIn("Item3", output)
         self.assertIn("Item4", output)
 
+    def test_display_in_columns_invalid_columns(self):
+        """Ensure ValueError is raised for non-positive column counts."""
+        with self.assertRaises(ValueError):
+            Utility.display_in_columns(["Item1"], columns=0)
+
 
 if __name__ == "__main__":
     unittest.main()
