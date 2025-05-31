@@ -410,8 +410,8 @@ def main() -> None:
     # Warn the user to create a backup before proceeding
     Logger.warn("\n*** Warning: Before making any changes, ensure you have created a backup copy of your save file. ***")
 
-    Logger.warn('''\nBe cautious when editing values: game mechanics may alter them dynamically. 
-Unintended affects may occur if values are set to extremes.\n''')
+    Logger.warn('''\nBe cautious when editing values: game mechanics may alter them dynamically.
+Unintended effects may occur if values are set to extremes.\n''')
 
     # Proceed with editing
     output_file = save_game_file_path
