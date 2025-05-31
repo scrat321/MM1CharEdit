@@ -1,5 +1,6 @@
 import math
 import random
+from itertools import zip_longest
 
 from pathlib import Path
 from typing import Union, Dict, List, Any
@@ -115,17 +116,15 @@ class Utility:
         """
         value_list = [f"{k} ({v})" for k, v in allowed_values.items()]
 
-        num_rows = -(-len(value_list) // columns)
-        rows = [value_list[i * num_rows:(i + 1) * num_rows] for i in range(columns)]
-
-        max_row_length = max(len(row) for row in rows)
-        for row in rows:
-            while len(row) < max_row_length:
-                row.append("")
+        rows_per_col = math.ceil(len(value_list) / columns)
+        split_values = [value_list[i * rows_per_col:(i + 1) * rows_per_col] for i in range(columns)]
 
         col_width = max(len(item) for item in value_list) + 2
-        formatted_rows = ["".join(item.ljust(col_width) for item in row) for row in zip(*rows)]
-        return "\n".join(formatted_rows)
+        lines = []
+        for row_items in zip_longest(*split_values, fillvalue=""):
+            lines.append("".join(item.ljust(col_width) for item in row_items))
+
+        return "\n".join(lines)
 
     @staticmethod
     def display_stats_in_columns(stats_map: Dict[int, Any], data: bytes, value_mappings: Dict[str, Any],
@@ -161,17 +160,12 @@ class Utility:
         # Format rows for display
         formatted_rows = [f"{row[0].ljust(stat_width)}{row[1].ljust(value_width)}" for row in rows]
 
-        # Split into columns
-        num_rows = math.ceil(len(formatted_rows) / columns)
-        grid = [formatted_rows[i:i + num_rows] for i in range(0, len(formatted_rows), num_rows)]
+        # Split into columns using zip_longest to handle uneven rows
+        rows_per_col = math.ceil(len(formatted_rows) / columns)
+        split_rows = [formatted_rows[i * rows_per_col:(i + 1) * rows_per_col] for i in range(columns)]
 
-        for row_set in zip(*grid):
-            Logger.text("  ".join(row for row in row_set))
-
-        leftover_rows = len(formatted_rows) % num_rows
-        if leftover_rows:
-            for row in formatted_rows[-leftover_rows:]:
-                Logger.text(row)
+        for row_items in zip_longest(*split_rows, fillvalue=""):
+            Logger.text("  ".join(item for item in row_items if item))
 
     @staticmethod
     def display_in_columns(items: List[str], columns: int = 1) -> None:
